@@ -47,3 +47,14 @@ Route::group(['prefix' => 'admin'], function () {
         return view('users');
     });
 });
+
+
+/* SECTION ADMIN */
+
+Route::get('admin/index', function () {
+    return view('admin/index');
+});
+
+Route::get('admin/ajouter', function () {
+    return view('admin/ajouter');
+});
