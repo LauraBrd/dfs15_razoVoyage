@@ -12,19 +12,31 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-//Route::get('voyages', function () {
-//    return view('voyages');
-//});
+Route::get('voyages', function () {
+    return view('voyages');
+});
 
+Route::get('show/{id_voyage}', function ($id_voyage) {
+    return view('show',['id' => $id_voyage]);
+})->name('show');
+
+/*
 Route::get('voyages/{id_voyage?}', function ($id_voyage = null) {
-    return "view('voyages')";
-})->where('id_voyage',	'[0-9]+');
+    if ($id_voyage) {
+        return view('voyages/{id_voyage}');
+    }return view('voyages/{id_voyage}');
+    
+})->where('id_voyage',	'[0-9]+');*/
 
 Route::get('a_propos', function () {
     return view('a_propos');
+});
+
+Route::get('hotel-room', function () {
+    return view('hotel-room');
 });
 
 Route::group(['prefix' => 'admin'], function () {
