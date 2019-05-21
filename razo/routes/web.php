@@ -31,9 +31,12 @@ Route::get('voyages/{id_voyage?}', function ($id_voyage = null) {
     
 })->where('id_voyage',	'[0-9]+');*/
 
+
 Route::get('a_propos', function () {
     return view('a_propos');
 });
+
+Route::get('about', 'StaticPageController@about');
 
 Route::get('hotel-room', function () {
     return view('hotel-room');

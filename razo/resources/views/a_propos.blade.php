@@ -20,7 +20,25 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-three-forth animate-box">
+						<div class="col-three-forth animate-box">)
+						<!-- @if (isset($message))
+						{
+							@dump($message)
+							<div class="row">
+								<h2>{{ message }}</h2>
+							</div>
+						}
+						@endif -->
+						@if (!empty($message))
+						{
+							@dump("Ce message indique à l’utilisateur qu’il a de la chance et qu’il bénéficie d’un code
+							promotionnel « SURPRISE » permettant d’avoir une réduction de -50% sur tout le site,
+							offre valable aujourd’hui seulement")
+						}
+						@endif
+
+
+
 							<h2>History</h2>
 							<div class="row">
 								<div class="col-md-12">

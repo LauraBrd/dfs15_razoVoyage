@@ -80,7 +80,7 @@
 									</ul>
 								</li> -->
 								<li><a href="voyages">Voyages</a></li>
-								<li><a href="a_propos">A propos</a></li>
+								<li><a href="about">A propos</a></li>
                                 <li><a href="contact.html">Contact</a></li>
                                 <li><a href="contact.html">Administration</a></li>
 							</ul>
