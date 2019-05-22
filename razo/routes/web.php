@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('voyages', function () {
+Route::get('listvoyages', function () {
     return view('voyages');
 });
 
@@ -52,12 +52,21 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
+
 /* SECTION ADMIN */
 
-Route::get('admin/index', function () {
+Route::get('Voyage', function () {
     return view('admin/index');
 });
 
 Route::get('admin/ajouter', function () {
     return view('admin/ajouter');
 });
+
+Route::resource('voyages','VoyageController');
+
+//Route::resource(‘posts’,’PostController’,	[‘except’	=>	[‘destroy’]]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

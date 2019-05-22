@@ -47,6 +47,10 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -65,24 +69,29 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="admin/index">Connexion</a></div>
+							<div id="colorlib-logo"><a href="logout">RazoVoyage</a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
 								<li class="active"><a href="/">Accueil</a></li>
-								<!-- <li class="has-dropdown">
-									<a href="tours.html">Tours</a>
-									<ul class="dropdown">
-										<li><a href="#">Destination</a></li>
-										<li><a href="#">Cruises</a></li>
-										<li><a href="hotel-room">Hotels</a></li>
-										<li><a href="#">Booking</a></li>
-									</ul>
-								</li> -->
-								<li><a href="voyages">Voyages</a></li>
+								<li><a href="listvoyages">Voyages</a></li>
 								<li><a href="about">A propos</a></li>
                                 <li><a href="contact.html">Contact</a></li>
-                                <li><a href="contact.html">Administration</a></li>
+								@auth
+								<li><a href="voyages">Administration</a></li>
+								<li><a class="dropdown-item" href="{{ route('logout') }}"
+								onclick="event.preventDefault();
+												document.getElementById('logout-form').submit();">
+									{{ __('Deconnexion') }}
+								</a>
+
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form></li>
+								
+								@else
+								<li><a href="login">Connexion</a></li>
+								@endauth
 							</ul>
 						</div>
 					</div>

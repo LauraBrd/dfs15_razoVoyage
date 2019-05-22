@@ -14,7 +14,8 @@ class VoyageController extends Controller
      */
     public function index()
     {
-        //
+        $voyages = Voyage::all();
+        return view('admin.index', ['voyages' => $voyages]);
     }
 
     /**
@@ -24,7 +25,7 @@ class VoyageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.ajout');
     }
 
     /**
@@ -35,7 +36,19 @@ class VoyageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $voyage = new Voyage;
+        $voyage->image = $request->image;
+        $voyage->destination = $request->destination;
+        $voyage->description = $request->description;
+        $voyage->prix = $request->prix;
+        $voyage->titre = $request->titre;
+        // pour enregistrer dans la bdd
+        $voyage->save();
+        /*if($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }*/
+        $voyages = Voyage::all();
+        return view('admin.index', ['voyages' => $voyages]);
     }
 
     /**
@@ -44,9 +57,11 @@ class VoyageController extends Controller
      * @param  \App\Voyage  $voyage
      * @return \Illuminate\Http\Response
      */
-    public function show(Voyage $voyage)
+    public function show(Int $id)
     {
-        //
+        $voyage = Voyage::find($id);
+
+        return view('admin.show', ['voyage' => $voyage]);
     }
 
     /**
@@ -55,9 +70,9 @@ class VoyageController extends Controller
      * @param  \App\Voyage  $voyage
      * @return \Illuminate\Http\Response
      */
-    public function edit(Voyage $voyage)
+    public function edit(Voyage $voyage, Request $request)
     {
-        //
+        return view('admin.edit', ['voyage' => $voyage]);
     }
 
     /**
@@ -69,7 +84,16 @@ class VoyageController extends Controller
      */
     public function update(Request $request, Voyage $voyage)
     {
-        //
+        $voyages = Voyage::all();
+        $voyage = Voyage::find(1);
+        $voyage->image = $request->image;
+        $voyage->destination = $request->destination;
+        $voyage->description = $request->description;
+        $voyage->prix = $request->prix;
+        $voyage->titre = $request->titre;
+        $voyage->save();
+        return view('admin.index', ['voyages' => $voyages]);
+
     }
 
     /**
@@ -80,6 +104,9 @@ class VoyageController extends Controller
      */
     public function destroy(Voyage $voyage)
     {
-        //
+        $voyage = Voyage::find($voyage);
+        $voyage->delete();
+        $voyages = Voyage::all();
+        return view('admin.index', ['voyages' => $voyages]);
     }
 }
