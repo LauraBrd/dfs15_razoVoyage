@@ -51,6 +51,11 @@ Route::group(['prefix' => 'admin'], function () {
     });
 });
 
+Route::get('formsearch', function() {
+    return view('recherche');
+});
+
+Route::get('search', 'VoyageController@search');
 
 
 /* SECTION ADMIN */
@@ -70,3 +75,10 @@ Route::resource('voyages','VoyageController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Middleware
+// Contrôler l'accès à certaines routes pour les personnes authentifiées
+Route::get('/reservation/{voyage}', 'VoyageController@reservation')->middleware('auth');
+
+// Contrôler l'accès à certaines routes pour les personnes non authentifiées
+Route::get('about', 'StaticPageController@about')->middleware('guest');

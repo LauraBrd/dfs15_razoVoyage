@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBilansTable extends Migration
+class AddIdVoyageToPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateBilansTable extends Migration
      */
     public function up()
     {
-        Schema::create('bilans', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('libelle');
-            $table->float('montantTotal');
-            $table->timestamps();
+        Schema::table('posts', function (Blueprint $table) {
+            $table->bigInteger('voyage_id')->unsigned()->after('visited');
+            $table->foreign('voyage_id')->references('id')->on('voyages');
         });
     }
 
@@ -28,6 +26,8 @@ class CreateBilansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bilans');
+        Schema::table('posts', function (Blueprint $table) {
+            //
+        });
     }
 }

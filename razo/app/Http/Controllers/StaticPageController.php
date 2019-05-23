@@ -22,4 +22,9 @@ class StaticPageController extends Controller
         return view("a_propos");
     }
 
+    public function __construct(){
+        $this->middleware('auth');
+        // $this->middleware('auth')->except('index');
+        // $this->middleware('auth')->only('index','create');
+    }
 }

@@ -76,7 +76,7 @@
 								<li class="active"><a href="/">Accueil</a></li>
 								<li><a href="listvoyages">Voyages</a></li>
 								<li><a href="about">A propos</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="formsearch">Rechercher</a></li>
 								@auth
 								<li><a href="voyages">Administration</a></li>
 								<li><a class="dropdown-item" href="{{ route('logout') }}"
